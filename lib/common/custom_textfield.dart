@@ -78,27 +78,26 @@ class CustomTextField extends StatelessWidget {
       children: [
         showTitle
             ? Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AppConstants.hzPadding),
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppConstants.hzPadding,
+              ),
               child: Text(title, style: CommonUI.customTextStyle()),
             )
             : const SizedBox(),
         showTitle ? const SizedBox(height: 16) : const SizedBox(),
         Neumorphic(
-          margin:  EdgeInsets.only(
+          margin: EdgeInsets.only(
             left: leftPadding,
             right: rightPadding,
             top: topPadding,
             bottom: bottomPadding,
           ),
-          style: NeumorphicStyle(
-            depth: 5,
-            intensity: 1,
-            color: fillColor,
-            shape: NeumorphicShape.concave,
+          style: CommonUI.customNeuMorphismStyle(
             boxShape: NeumorphicBoxShape.roundRect(
               BorderRadius.circular(borderRadius),
             ),
           ),
+
           child: TextFormField(
             controller: controller,
             readOnly: readOnly,
@@ -107,7 +106,7 @@ class CustomTextField extends StatelessWidget {
             obscureText: obSecureText!,
             textAlign: textAlign,
             keyboardType: keyboardType,
-            cursorColor: AppColors.gray,
+            cursorColor: AppColors.black,
             inputFormatters: inputFormatters,
             textCapitalization:
                 isTextCapital == true
@@ -116,7 +115,7 @@ class CustomTextField extends StatelessWidget {
             focusNode: focusNode,
             onTap: onTap,
             onChanged: onChanged,
-            style: CommonUI.customTextStyle(),
+            style: CommonUI.customTextStyle(color: AppColors.black),
             validator: validator,
             enableInteractiveSelection: true,
             textInputAction:
@@ -135,7 +134,7 @@ class CustomTextField extends StatelessWidget {
                   prefixIcon == null
                       ? null
                       : Padding(
-                          padding: const EdgeInsets.only(left: 12),
+                        padding: const EdgeInsets.only(left: 12),
                         child: Icon(prefixIcon, color: AppColors.black),
                       ),
               suffixIcon:

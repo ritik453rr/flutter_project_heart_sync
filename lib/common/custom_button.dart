@@ -69,7 +69,7 @@ class CustomButton extends StatelessWidget {
                 : Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    if (showImage) SvgPicture.asset(imagePath, width: 16),
+                    if (showImage) CommonUI.setSvg(imagePath),
                     if (showImage) const SizedBox(width: 10),
                     Text(
                       text,

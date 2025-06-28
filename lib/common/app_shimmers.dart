@@ -23,7 +23,7 @@ class AppShimmers {
                 right: AppConstants.hzPadding,
                 top: 20,
               ),
-              decoration: CommonUI.boxDecoration(
+              decoration: CommonUI.borderDecoration(
                 color: AppColors.white,
                 topLeft: 20,
                 topRight: 20,
@@ -36,15 +36,14 @@ class AppShimmers {
         const SizedBox(height: 20),
         Row(
           children: [
-           const Spacer(),
+            const Spacer(),
             Shimmer.fromColors(
               baseColor: AppColors.shimmerBase,
               highlightColor: AppColors.shimmerHl,
               child: Container(
                 width: 50,
                 height: 50,
-                decoration: 
-                const BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.white,
                 ),
@@ -57,7 +56,7 @@ class AppShimmers {
               child: Container(
                 width: 50,
                 height: 50,
-                decoration:const  BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.white,
                 ),
@@ -154,7 +153,7 @@ class AppShimmers {
             child: Container(
               height: 80,
               width: 80,
-              margin:const  EdgeInsets.only(right: 10),
+              margin: const EdgeInsets.only(right: 10),
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.white,

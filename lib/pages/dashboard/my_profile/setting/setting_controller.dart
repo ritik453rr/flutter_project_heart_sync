@@ -1,9 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:heart_sync/common/app_storage.dart';
+import 'package:heart_sync/routing/app_routes.dart';
 
 /// A controller class for managing settings in the application.
 class SettingController extends GetxController {
+  /// Instances
+  var auth = FirebaseAuth.instance;
   var currentLocation = "Loading...".obs;
   //AppStorage appStorage = AppStorage();
 
@@ -13,9 +19,17 @@ class SettingController extends GetxController {
     //fetchCurrentLocation();
   }
 
+  /// method to logout the user from the application
+  void logout() async {
+    AppStorage.setLoginStatus(false);
+    await auth.signOut();
+    await GoogleSignIn().signOut();
+    Get.offAllNamed(AppRoutes.login);
+  }
+
   /// Function to logout the user
   // void logout() {
-  
+
   // }
 
   /// Function to fetch the current location of the user and convert it into a readable address.
@@ -40,4 +54,3 @@ class SettingController extends GetxController {
   //   }
   // }
 }
-

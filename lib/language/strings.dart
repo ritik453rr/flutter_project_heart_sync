@@ -2,12 +2,7 @@
 class Strings {
   static const String textAppName = 'app_name';
 
-  /// Onboarding Page
-  static const String textSkip = 'skip';
-  static const String textNext = 'next';
-  static const String textDone = 'done';
-
-  /// Login Page
+   /// Login Page
   static const String textEmail = 'email';
   static const String textPassword = 'password';
   static const String textLogin = 'login';
@@ -15,6 +10,14 @@ class Strings {
   static const String textSignUp = 'sign_up';
   static const String textDontHaveAccount = 'dont_have_account';
   static const String textLoginTitle = 'login_title';
+  static const textNoInternetConnection = "noInternetConnection";
+
+  /// Onboarding Page
+  static const String textSkip = 'skip';
+  static const String textNext = 'next';
+  static const String textDone = 'done';
+
+ 
 
   /// Sign Up Page
   static const String textSignUpTitle = 'sign_up_title';

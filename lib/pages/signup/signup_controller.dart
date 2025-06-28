@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/routing/app_routes.dart';
 
@@ -17,6 +18,7 @@ class SignUpController extends GetxController {
   var isConfirmPasswordVisible = false.obs;
   var isLoading = false.obs;
   var snackbarShown = false;
+  var formKey = GlobalKey<FormState>();
 
   /// Toggles the visibility of the password.
   void togglePasswordVisibility() {
@@ -28,8 +30,8 @@ class SignUpController extends GetxController {
     isConfirmPasswordVisible.value = !isConfirmPasswordVisible.value;
   }
 
-/// Validates the input fields for email, password, and confirm password.
-  bool validate() {
+  /// Validates the input fields for email, password, and confirm password.
+  bool validateAllFields() {
     var email = emailController.text.trim();
     var password = passwordController.text.trim();
     var confirmPassword = confirmPasswordController.text.trim();
@@ -45,7 +47,7 @@ class SignUpController extends GetxController {
       CommonUI.snackbar('Error', 'Please enter your email address');
       return false;
     } else if (!regExp.hasMatch(email)) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
+      if (snackbarShown) return false;
       snackbarShown = true;
       Future.delayed(const Duration(seconds: 3), () {
         snackbarShown = false;
@@ -97,11 +99,16 @@ class SignUpController extends GetxController {
 
   /// Function to create the user using Email and Password
   Future<void> createUser() async {
-    if (validate()) {
-      if (isLoading.value) return; // Prevent multiple submissions
-      isLoading.value = true; // Set loading state to true
+    if (validateAllFields()) {
+      if (!await AppConstants.checkInternetConnection()) {
+        CommonUI.snackbar('Error', 'No internet connection');
+        return;
+      }
+      if (isLoading.value) return;
+      isLoading.value = true;
+
       try {
-        var credential = await auth.createUserWithEmailAndPassword(
+        await auth.createUserWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
         );
@@ -124,14 +131,16 @@ class SignUpController extends GetxController {
           Future.delayed(const Duration(seconds: 3), () {
             snackbarShown = false;
           });
-          CommonUI.snackbar('Error', 'The account already exists for that email.');
+          CommonUI.snackbar(
+            'Error',
+            'The account already exists for that email.',
+          );
         }
       } catch (e) {
         CommonUI.snackbar('Error', 'An unexpected error occurred');
       } finally {
-        isLoading.value = false; // Reset loading state
+        isLoading.value = false;
       }
     }
   }
-
 }

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_fonts.dart';
@@ -35,7 +36,7 @@ class CommonUI {
   }
 
   /// A method to return a box decoration.
-  static BoxDecoration boxDecoration({
+  static BoxDecoration borderDecoration({
     Color color = AppColors.white,
     double topLeft = 20,
     double topRight = 20,
@@ -50,6 +51,17 @@ class CommonUI {
         bottomLeft: Radius.circular(bottomLeft),
         bottomRight: Radius.circular(bottomRight),
       ),
+    );
+  }
+
+  /// method to show toast message.
+  static Future toast({required String toastMsg}) {
+    return Fluttertoast.showToast(
+      msg: toastMsg.toString(),
+      backgroundColor: Colors.black,
+      toastLength: Toast.LENGTH_LONG,
+      textColor: AppColors.white,
+      fontSize: AppFontSizes.font16,
     );
   }
 

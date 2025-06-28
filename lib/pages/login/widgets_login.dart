@@ -9,26 +9,7 @@ import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/language/strings.dart';
 import 'package:heart_sync/routing/app_routes.dart';
 
-/// A widget that displays the login header with an image and title.
-Widget loginHeader() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      //Center(child: Image.asset(ImgRes.imgLogin, width: 250)),
-      const SizedBox(height: 30),
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppConstants.hzPadding),
-        child: Text(
-          Strings.textLoginTitle.tr,
-          style: CommonUI.customTextStyle(
-            fontFamily: AppFonts.fontSemiBold,
-            fontSize: AppFontSizes.font16,
-          ),
-        ),
-      ),
-    ],
-  );
-}
+
 
 /// A widget that displays a sign-up prompt with a clickable text.
 Widget signUpPrompt() {

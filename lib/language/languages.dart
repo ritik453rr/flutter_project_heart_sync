@@ -6,6 +6,16 @@ class Languages extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
     'en': {
+      /// Login Page
+      Strings.textEmail: 'Email',
+      Strings.textPassword: 'Password',
+      Strings.textLogin: 'Login',
+      Strings.textForgotPassword: 'Forgot Password',
+      Strings.textSignUp: 'Sign Up',
+      Strings.textDontHaveAccount: 'Don\'t have an account',
+      Strings.textLoginTitle: 'Existing Users,\nLog In Here',
+      Strings.textNoInternetConnection: "No internet connection",
+
       /// Onboarding Page
       Strings.textSkip: 'Skip',
       Strings.textNext: 'Next',
@@ -19,14 +29,7 @@ class Languages extends Translations {
 
       Strings.textAppName: 'VibeMate',
 
-      /// Login Page
-      Strings.textEmail: 'Email',
-      Strings.textPassword: 'Password',
-      Strings.textLogin: 'Login',
-      Strings.textForgotPassword: 'Forgot Password',
-      Strings.textSignUp: 'Sign Up',
-      Strings.textDontHaveAccount: 'Don\'t have an account',
-      Strings.textLoginTitle: 'Existing Users,\nLog In Here',
+      
 
       /// SignUp Page
       Strings.textSignUpTitle: "New User?\nRegister Here",

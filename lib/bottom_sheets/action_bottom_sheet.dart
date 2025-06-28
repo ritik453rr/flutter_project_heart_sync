@@ -17,7 +17,7 @@ class ActionBottomSheet {
       isScrollControlled: false,
       Container(
         width: Get.width,
-        decoration: CommonUI.boxDecoration(topLeft: 20, topRight: 20),
+        decoration: CommonUI.borderDecoration(topLeft: 20, topRight: 20),
         child: Wrap(
           children: [
             Padding(

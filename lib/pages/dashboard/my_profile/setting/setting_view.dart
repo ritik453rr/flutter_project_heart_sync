@@ -115,7 +115,9 @@ class SettingView extends StatelessWidget {
                   OkCancelDialog().customAlertBox(
                     title: Strings.textLogOut.tr,
                     subTitle: '${Strings.textLogOutTitle.tr}?',
-                    onConfirmPressed: () {},
+                    onConfirmPressed: () {
+                      controller.logout();
+                    },
                   );
                 },
               ),
