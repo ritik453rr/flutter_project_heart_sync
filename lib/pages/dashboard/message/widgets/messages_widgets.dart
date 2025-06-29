@@ -5,7 +5,7 @@ import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import '../../dashboard_main/widgets_dashboard.dart';
 
 /// A widget that represents a message item in the message list.
@@ -66,7 +66,7 @@ Widget emptyMessagesState() {
         ),
         SizedBox(height: 20),
         NeumorphicText(
-          Strings.textNoMessagesFound.tr,
+          AppStrings.textNoMessagesFound.tr,
           style: CommonUI.customNeuMorphismStyle(
             color: AppColors.black,
             shadowDarkColor: Colors.black26,
@@ -79,7 +79,7 @@ Widget emptyMessagesState() {
         ),
         SizedBox(height: 10),
         NeumorphicText(
-          Strings.textAddFriendsToConversation.tr,
+          AppStrings.textAddFriendsToConversation.tr,
           style: CommonUI.customNeuMorphismStyle(
             color: AppColors.black.withOpacity(0.6),
             shadowDarkColor: Colors.black26,

@@ -5,7 +5,7 @@ import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/dashboard_main/widgets_dashboard.dart';
 
 /// A widget to represent a friend request item.
@@ -85,7 +85,7 @@ Widget emptyRequestsState() {
         ),
         SizedBox(height: 20),
         NeumorphicText(
-          Strings.textNoRequests.tr,
+          AppStrings.textNoRequests.tr,
           style: CommonUI.customNeuMorphismStyle(
             color: AppColors.black,
             shadowDarkColor: Colors.black26,
@@ -98,7 +98,7 @@ Widget emptyRequestsState() {
         ),
         SizedBox(height: 10),
         NeumorphicText(
-          Strings.textSuggestedForYou.tr,
+          AppStrings.textSuggestedForYou.tr,
           style: CommonUI.customNeuMorphismStyle(
             color: AppColors.black.withValues(alpha: 0.6),
             shadowDarkColor: Colors.black26,

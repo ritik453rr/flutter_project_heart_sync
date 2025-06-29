@@ -1,74 +1,55 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:heart_sync/common/app_constants.dart';
+import 'package:heart_sync/common/common_ui.dart';
+import 'package:heart_sync/language/app_strings.dart';
 
 /// A Controller class for the Forgot Password screen.
 class ForgotPasswordController extends GetxController {
   TextEditingController emailController = TextEditingController();
+  var auth = FirebaseAuth.instance;
   var isLoading = false.obs;
 
   /// Function to validate the Email using Regx
-  String validateEmail(String value) {
-    String pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
-    RegExp regExp = RegExp(pattern);
-    if (value.isEmpty) {
-      return 'Please enter your email';
-    } else if (!regExp.hasMatch(value)) {
-      return 'Please enter a valid email address';
+  bool validateEmail() {
+    var email = emailController.text.trim();
+    if (email.isEmpty) {
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterEmail.tr);
+      return false;
+    } else if (!GetUtils.isEmail(email)) {
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterValidEmail.tr);
+      return false;
     }
-    return '';
+    return true;
   }
 
   /// Function to send the password reset email
   void sendPasswordResetEmail() async {
-    String email = emailController.text.trim();
-    String validationMessage = validateEmail(email);
-
-    if (validationMessage.isNotEmpty) {
-      AppConstants.hideKeyboard();
-      Get.snackbar(
-        'Error',
-        validationMessage,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+    if (!await AppConstants.checkInternetConnection()) {
+      CommonUI.toast(toastMsg: AppStrings.textNoInternetConnection.tr);
       return;
     }
-
-    try {
-      if (!await AppConstants.checkInternetConnection()) {
+    if (validateEmail()) {
+      try {
+        var email = emailController.text.trim();
         AppConstants.hideKeyboard();
-        Get.snackbar(
-          'Error',
-          'No internet connection',
-          snackPosition: SnackPosition.BOTTOM,
-          duration: const Duration(seconds: 3),
+        isLoading.value = true;
+        await auth.sendPasswordResetEmail(email: email);
+        emailController.clear();
+        // Get.back();
+        CommonUI.snackbar(
+          title: "Email Sent",
+          message: "Password reset email sent to $email",
         );
-        return;
+        
+      } catch (e) {
+        debugPrint("Error sending password reset email: $e");
+        CommonUI.snackbar(message: "Failed to send email: ");
+      } finally {
+        isLoading.value = false;
       }
-
-      isLoading.value = true;
-      //await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-
-      AppConstants.hideKeyboard();
-      Get.snackbar(
-        'Success',
-        'Password reset email sent to $email',
-        snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 3),
-      );
-
-      await Future.delayed(const Duration(seconds: 3));
-      Get.back();
-    } catch (e) {
-      AppConstants.hideKeyboard();
-      Get.snackbar(
-        'Error',
-        'Failed to send password reset email',
-        snackPosition: SnackPosition.BOTTOM,
-        duration: const Duration(seconds: 3),
-      );
-    } finally {
-      isLoading.value = false;
     }
   }
 }

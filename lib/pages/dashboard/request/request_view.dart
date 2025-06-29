@@ -4,7 +4,7 @@ import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_app_bar.dart';
-import 'package:heart_sync/language/strings.dart' show Strings;
+import 'package:heart_sync/language/app_strings.dart' show AppStrings;
 import 'package:heart_sync/pages/dashboard/request/request_controller.dart';
 import 'package:heart_sync/pages/dashboard/request/widgets/request_widgets.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -17,7 +17,7 @@ class RequestView extends GetView<RequestController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: Strings.textFriendRequests.tr,
+        title: AppStrings.textFriendRequests.tr,
         titleColor: AppColors.pink,
         shadow: false,
       ),

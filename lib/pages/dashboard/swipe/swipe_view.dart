@@ -8,7 +8,7 @@ import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/app_shimmers.dart';
 import 'package:heart_sync/common/common_ui.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/detail_page/widgets_detail_page.dart';
 import 'package:heart_sync/pages/dashboard/swipe/swipe_controller.dart';
 import 'package:heart_sync/pages/dashboard/swipe/widgets/swipe_widgets.dart';
@@ -28,7 +28,7 @@ class SwipeView extends GetView<SwipeController> {
           backgroundColor: AppColors.background,
           surfaceTintColor: AppColors.background,
           title: CommonUI.neumorphicText(
-            Strings.textFindMatch.tr,
+            AppStrings.textFindMatch.tr,
             fontSize: AppFontSizes.font20,
             fontFamily: AppFonts.fontSemiBold,
             color: AppColors.pink,
@@ -42,7 +42,7 @@ class SwipeView extends GetView<SwipeController> {
           if (controller.users.length <= 1) {
             return Center(
               child: CommonUI.neumorphicText(
-                Strings.textNoUsersFound.tr,
+                AppStrings.textNoUsersFound.tr,
                 fontSize: AppFontSizes.font20,
                 fontFamily: AppFonts.fontSemiBold,
                 color: AppColors.black,
@@ -76,10 +76,10 @@ class SwipeView extends GetView<SwipeController> {
                     Color? overlayColor;
 
                     if (percentThresholdX > 0.3) {
-                      overlayText = Strings.textLike.tr;
+                      overlayText = AppStrings.textLike.tr;
                       overlayColor = AppColors.colorGreen;
                     } else if (percentThresholdX < -0.3) {
-                      overlayText = Strings.textNope.tr;
+                      overlayText = AppStrings.textNope.tr;
                       overlayColor = AppColors.red;
                     }
 
@@ -95,9 +95,13 @@ class SwipeView extends GetView<SwipeController> {
                           Positioned(
                             top: 50,
                             left:
-                                overlayText == Strings.textLike.tr ? 20 : null,
+                                overlayText == AppStrings.textLike.tr
+                                    ? 20
+                                    : null,
                             right:
-                                overlayText == Strings.textNope.tr ? 20 : null,
+                                overlayText == AppStrings.textNope.tr
+                                    ? 20
+                                    : null,
                             child: Text(
                               overlayText,
                               style: TextStyle(

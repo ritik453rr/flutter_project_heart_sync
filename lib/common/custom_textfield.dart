@@ -29,10 +29,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIconTap,
     this.isTextCapital = false,
     this.isTextInputDone = false,
-    this.leftPadding = 20,
-    this.rightPadding = 20,
-    this.topPadding = 0,
-    this.bottomPadding = 0,
+
     this.prefixIcon,
     this.showTitle = false,
     this.title = "",
@@ -62,10 +59,6 @@ class CustomTextField extends StatelessWidget {
   final bool isTextCapital;
   final bool isTextInputDone;
   final int maxLines;
-  final double leftPadding;
-  final double rightPadding;
-  final double topPadding;
-  final double bottomPadding;
   final bool showTitle;
   final String title;
   final int? maxLength;
@@ -86,12 +79,7 @@ class CustomTextField extends StatelessWidget {
             : const SizedBox(),
         showTitle ? const SizedBox(height: 16) : const SizedBox(),
         Neumorphic(
-          margin: EdgeInsets.only(
-            left: leftPadding,
-            right: rightPadding,
-            top: topPadding,
-            bottom: bottomPadding,
-          ),
+
           style: CommonUI.customNeuMorphismStyle(
             boxShape: NeumorphicBoxShape.roundRect(
               BorderRadius.circular(borderRadius),

@@ -1,7 +1,7 @@
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/detail_page/detail_page_controller.dart';
 import '../common/app_colors.dart';
 import '../common/common_ui.dart';
@@ -24,7 +24,7 @@ class ReportBottomSheet {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            actionSheetItem(title: Strings.textSelectReasonToBlock.tr),
+            actionSheetItem(title: AppStrings.textSelectReasonToBlock.tr),
             Expanded(
               child: ListView.builder(
                 physics: const ClampingScrollPhysics(),
@@ -70,7 +70,7 @@ class ReportBottomSheet {
               padding: const EdgeInsets.symmetric(vertical: 15),
               child: Center(
                 child: Text(
-                  Strings.textReportUser.tr,
+                  AppStrings.textReportUser.tr,
                   style: const TextStyle(
                     fontSize: AppFontSizes.font16,
                     fontWeight: FontWeight.bold,

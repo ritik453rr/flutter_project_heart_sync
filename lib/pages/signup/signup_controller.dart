@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/common_ui.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/routing/app_routes.dart';
 
 /// A Controller class for the SignUp screen.
@@ -17,8 +18,6 @@ class SignUpController extends GetxController {
   var isPasswordVisible = false.obs;
   var isConfirmPasswordVisible = false.obs;
   var isLoading = false.obs;
-  var snackbarShown = false;
-  var formKey = GlobalKey<FormState>();
 
   /// Toggles the visibility of the password.
   void togglePasswordVisibility() {
@@ -39,58 +38,30 @@ class SignUpController extends GetxController {
     RegExp regExp = RegExp(emailPattern);
     // Validate email
     if (email.isEmpty) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar('Error', 'Please enter your email address');
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterEmail.tr);
       return false;
     } else if (!regExp.hasMatch(email)) {
-      if (snackbarShown) return false;
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar('Error', 'Please enter a valid email address');
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterValidEmail.tr);
       return false;
     }
 
     // Validate password
     if (password.isEmpty) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar('Error', 'Please enter your password');
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterPassword.tr);
       return false;
     } else if (password.length < 8) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar("Error", " Password length must be 8 character");
+      CommonUI.adaptiveDialog(
+        content: AppStrings.textPasswordLengthConstraint.tr,
+      );
       return false;
     }
 
     // Validate confirm password
     if (confirmPassword.isEmpty) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar("Error", 'Please confirm your password');
+      CommonUI.adaptiveDialog(content: AppStrings.textConfirmPassword.tr);
       return false;
     } else if (confirmPassword != passwordController.text) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar("Error", 'Passwords do not match');
+      CommonUI.adaptiveDialog(content: AppStrings.textPasswordsDoNotMatch.tr);
       return false;
     }
 
@@ -98,12 +69,12 @@ class SignUpController extends GetxController {
   }
 
   /// Function to create the user using Email and Password
-  Future<void> createUser() async {
+  Future<void> signUp() async {
+    if (!await AppConstants.checkInternetConnection()) {
+      CommonUI.toast(toastMsg: AppStrings.textNoInternetConnection.tr);
+      return;
+    }
     if (validateAllFields()) {
-      if (!await AppConstants.checkInternetConnection()) {
-        CommonUI.snackbar('Error', 'No internet connection');
-        return;
-      }
       if (isLoading.value) return;
       isLoading.value = true;
 
@@ -115,29 +86,20 @@ class SignUpController extends GetxController {
         emailController.clear();
         passwordController.clear();
         confirmPasswordController.clear();
-        CommonUI.snackbar('Success', 'User created successfully');
+        CommonUI.snackbar(
+          title: AppStrings.textSuccess.tr,
+          message: AppStrings.textUserCreatedSuccessfully.tr,
+        );
         Get.toNamed(AppRoutes.login);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          if (snackbarShown) return; // Prevent multiple snackbars
-          snackbarShown = true;
-          Future.delayed(const Duration(seconds: 3), () {
-            snackbarShown = false;
-          });
-          CommonUI.snackbar('Error', 'The password provided is too weak.');
+          CommonUI.snackbar(message: AppStrings.textPasswordIsTooWeak.tr);
         } else if (e.code == 'email-already-in-use') {
-          if (snackbarShown) return; // Prevent multiple snackbars
-          snackbarShown = true;
-          Future.delayed(const Duration(seconds: 3), () {
-            snackbarShown = false;
-          });
-          CommonUI.snackbar(
-            'Error',
-            'The account already exists for that email.',
-          );
+          CommonUI.adaptiveDialog(content: AppStrings.textEmailAlreadyInUse.tr);
         }
       } catch (e) {
-        CommonUI.snackbar('Error', 'An unexpected error occurred');
+        debugPrint('Error creating user: $e');
+        CommonUI.snackbar(message: AppStrings.textUnExpectedError.tr);
       } finally {
         isLoading.value = false;
       }

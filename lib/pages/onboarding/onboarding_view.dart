@@ -7,7 +7,7 @@ import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/custom_back_button.dart';
 import 'package:heart_sync/common/custom_button.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/onboarding/onboarding_controller.dart';
 
 /// A view that displays the onboarding process for the user.
@@ -65,7 +65,7 @@ class OnboardingView extends StatelessWidget {
             right: 20,
             child: Obx(() {
               return CustomButton(
-                text: Strings.textNext.tr,
+                text: AppStrings.textNext.tr,
                 onPressed:
                     () =>
                         controller.isLoading.value

@@ -6,7 +6,7 @@ import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/dialogs/ok_cancel_dialog.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:intl/intl.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'detail_page_controller.dart';
@@ -82,12 +82,12 @@ Widget aboutSection(DetailPageController controller) {
       children: [
         sectionHeading(
           icon: Icons.format_quote_rounded,
-          title: Strings.textAboutMe.tr,
+          title: AppStrings.textAboutMe.tr,
         ),
         const SizedBox(height: 5),
         CommonUI.neumorphicText(
           textAlign: TextAlign.start,
-          Strings.textNoBioAdded.tr,
+          AppStrings.textNoBioAdded.tr,
           fontSize: AppFontSizes.font14,
         ),
       ],
@@ -104,7 +104,7 @@ Widget basicInfoSection(DetailPageController controller) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        sectionHeading(icon: Icons.person, title: Strings.textBasicInfo.tr),
+        sectionHeading(icon: Icons.person, title: AppStrings.textBasicInfo.tr),
         const SizedBox(height: 12),
         infoItem(icon: Icons.cake, text: "Dob"),
         // if (controller.user.gender.isNotEmpty) ...[
@@ -136,13 +136,13 @@ Widget essentialsSection(DetailPageController controller) {
       children: [
         sectionHeading(
           icon: Icons.info_outline,
-          title: Strings.textEssentials.tr,
+          title: AppStrings.textEssentials.tr,
         ),
         const SizedBox(height: 12),
         //if (controller.user.distance > 0)
         infoItem(
           icon: Icons.location_on,
-          text: " Test ${Strings.textKmAway.tr}",
+          text: " Test ${AppStrings.textKmAway.tr}",
         ),
         if (true) ...[
           const SizedBox(height: 8),
@@ -170,7 +170,10 @@ Widget preferencesSection(DetailPageController controller) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        sectionHeading(icon: Icons.favorite, title: Strings.textPreferences.tr),
+        sectionHeading(
+          icon: Icons.favorite,
+          title: AppStrings.textPreferences.tr,
+        ),
         const SizedBox(height: 12),
         if (true) infoItem(icon: Icons.search, text: "Long Term"),
         if (true) ...[
@@ -195,7 +198,10 @@ Widget interestsSection(DetailPageController controller) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        sectionHeading(icon: Icons.interests, title: Strings.textInterests.tr),
+        sectionHeading(
+          icon: Icons.interests,
+          title: AppStrings.textInterests.tr,
+        ),
       ],
     ),
   );
@@ -378,7 +384,7 @@ Widget actionButton({
 /// A method to build a block dialog.
 blockDialog({required String subTitle}) {
   return OkCancelDialog().customAlertBox(
-    title: Strings.textBlock.tr,
+    title: AppStrings.textBlock.tr,
     subTitle: subTitle,
     icon: Icons.block,
   );

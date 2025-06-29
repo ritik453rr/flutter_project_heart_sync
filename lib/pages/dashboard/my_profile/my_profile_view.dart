@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/my_profile_controller.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/widgets/my_profile_widgets.dart';
 import 'package:heart_sync/routing/app_routes.dart';
@@ -80,25 +80,25 @@ class MyProfileView extends StatelessWidget {
 
           SizedBox(height: 30),
           customProfileItems(
-            title: Strings.textProfile.tr,
+            title: AppStrings.textProfile.tr,
             icon: CupertinoIcons.person,
             onPressed: () => Get.toNamed(AppRoutes.profile),
           ),
           SizedBox(height: 16),
           customProfileItems(
-            title: Strings.textSettings.tr,
+            title: AppStrings.textSettings.tr,
             icon: CupertinoIcons.settings,
             onPressed: () => Get.toNamed(AppRoutes.setting),
           ),
           SizedBox(height: 16),
           customProfileItems(
-            title: Strings.textPrivacy.tr,
+            title: AppStrings.textPrivacy.tr,
             icon: CupertinoIcons.lock_shield,
             onPressed: () => controller.launchPrivacyPolicy(),
           ),
           SizedBox(height: 16),
           customProfileItems(
-            title: Strings.textContactUs.tr,
+            title: AppStrings.textContactUs.tr,
             icon: CupertinoIcons.mail,
             onPressed: () {},
           ),

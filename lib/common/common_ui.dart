@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_fonts.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:shimmer/shimmer.dart';
 import 'app_colors.dart';
 import 'app_font_sizes.dart';
@@ -13,26 +13,29 @@ import 'app_font_sizes.dart';
 /// Common UI utilities
 class CommonUI {
   /// Set PNG image
-  static Image setPng(String name, {double? height}) {
-    return Image.asset('assets/images/pngs/$name.png', height: height);
+  static Image setPng(String name, {double? height, double? width}) {
+    return Image.asset(
+      'assets/images/pngs/$name.png',
+      height: height,
+      width: width,
+    );
   }
 
   /// Set SVG image
-  static SvgPicture setSvg(String name) {
-    return SvgPicture.asset('assets/images/svgs/$name.svg');
+  static SvgPicture setSvg(String name,{double? height,Color? color}) {
+    return SvgPicture.asset('assets/images/svgs/$name.svg',height: height,
+    color: color,
+    
+    );
   }
 
   /// Custom text style
   static TextStyle customTextStyle({
-    double? fontSize,
-    Color? color,
-    String? fontFamily,
+    double fontSize = AppFontSizes.font14,
+    Color color = AppColors.black,
+    String fontFamily = AppFonts.fontRegular,
   }) {
-    return TextStyle(
-      fontSize: fontSize ?? AppFontSizes.font14,
-      color: color ?? AppColors.primary,
-      fontFamily: fontFamily,
-    );
+    return TextStyle(fontSize: fontSize, color: color, fontFamily: fontFamily);
   }
 
   /// A method to return a box decoration.
@@ -62,6 +65,46 @@ class CommonUI {
       toastLength: Toast.LENGTH_LONG,
       textColor: AppColors.white,
       fontSize: AppFontSizes.font16,
+    );
+  }
+
+  /// A method to show an adaptive dialog with a title and content.
+  static Future adaptiveDialog({
+    String title = "Error",
+    required String content,
+  }) {
+    return showAdaptiveDialog(
+      context: Get.context!,
+      builder: (context) {
+        return AlertDialog.adaptive(
+          title: Text(
+            title,
+            style: customTextStyle(fontSize: 24, color: AppColors.black),
+          ),
+          content: Text(
+            content,
+            style: customTextStyle(
+              fontSize: AppFontSizes.font14,
+              color: AppColors.black,
+              fontFamily: AppFonts.fontMedium,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text(
+                AppStrings.textOk.tr,
+                style: customTextStyle(
+                  color: AppColors.primary,
+                  fontFamily: AppFonts.fontSemiBold,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -325,7 +368,7 @@ class CommonUI {
                             size: 16,
                           ),
                           Text(
-                            " ${"$distance ${Strings.textKmAway.tr}"}",
+                            " ${"$distance ${AppStrings.textKmAway.tr}"}",
                             style: TextStyle(
                               fontSize: AppFontSizes.font14,
                               fontFamily: AppFonts.fontSemiBold,
@@ -344,7 +387,11 @@ class CommonUI {
   }
 
   /// A function to show a snackbar with a title and message.
-  static snackbar(String title, String message) {
-    return Get.snackbar(title, message, margin: const EdgeInsets.all(10));
+  static snackbar({String? title, required String message}) {
+    return Get.snackbar(
+      title ?? AppStrings.textError.tr,
+      message,
+      margin: const EdgeInsets.all(10),
+    );
   }
 }

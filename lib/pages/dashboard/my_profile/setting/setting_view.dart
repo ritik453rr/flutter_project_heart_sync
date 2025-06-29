@@ -6,11 +6,12 @@ import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
+import 'package:heart_sync/common/app_images.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_app_bar.dart';
 import 'package:heart_sync/common/custom_button.dart';
 import 'package:heart_sync/dialogs/ok_cancel_dialog.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/edit_profile/widgets/edit_profile_widgets.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/setting/setting_controller.dart';
 import 'package:share_plus/share_plus.dart';
@@ -26,135 +27,144 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: Strings.textSettings.tr),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 20),
-            NeumorphicButton(
-              onPressed: () {},
-              provideHapticFeedback: true,
-              style: CommonUI.customNeuMorphismStyle(),
-              margin: EdgeInsets.symmetric(horizontal: AppConstants.hzPadding),
-              child: Container(
-                width: Get.width,
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.whatshot),
-                        Text(
-                          Strings.textAppName.tr,
-                          style: CommonUI.customTextStyle(
-                            fontFamily: AppFonts.fontSemiBold,
-                            fontSize: AppFontSizes.font16,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      Strings.textPriorityLikes.tr,
-                      style: CommonUI.customTextStyle(
-                        fontSize: AppFontSizes.font12,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            customEditProfileItems(
-              label: Strings.textAccountSettings.tr,
-              title: "Email",
-              titleColor: AppColors.black,
-              icon: CupertinoIcons.mail,
-              onPressed: () {},
-            ),
-            customEditProfileItems(
-              label: Strings.textDistance.tr,
-              title: "TEst",
-              titleColor: AppColors.black,
-              icon: Icons.location_on_outlined,
-              onPressed: () {},
-            ),
-            SizedBox(height: 20),
-            Obx(() {
-              return customEditProfileItems(
-                flex: 9,
-                label: Strings.textLocation.tr,
-                title: controller.currentLocation.value.toString(),
-                titleColor: AppColors.black,
-                icon: CupertinoIcons.location,
+      appBar: CustomAppBar(title: AppStrings.textSettings.tr),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              NeumorphicButton(
                 onPressed: () {},
-              );
-            }),
-            SizedBox(height: 16),
-            customEditProfileItems(
-              title: Strings.textShareVibeMate.tr,
-              titleColor: AppColors.black,
-              icon: Icons.share,
-              onPressed:
-                  () => Share.shareUri(
-                    Uri.parse(
-                      'https://play.google.com/store/apps/details?id=com.vibemate',
-                    ),
+                provideHapticFeedback: true,
+                style: CommonUI.customNeuMorphismStyle(),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: AppConstants.hzPadding,
+                ),
+                child: Container(
+                  width: Get.width,
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.whatshot),
+                          Text(
+                            AppStrings.textAppName.tr,
+                            style: CommonUI.customTextStyle(
+                              fontFamily: AppFonts.fontSemiBold,
+                              fontSize: AppFontSizes.font16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        AppStrings.textPriorityLikes.tr,
+                        style: CommonUI.customTextStyle(
+                          fontSize: AppFontSizes.font12,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: CustomButton(
-                width: 250,
-                borderRadius: 10,
-                text: Strings.textLogOut.tr,
-                onPressed: () {
-                  OkCancelDialog().customAlertBox(
-                    title: Strings.textLogOut.tr,
-                    subTitle: '${Strings.textLogOutTitle.tr}?',
-                    onConfirmPressed: () {
-                      controller.logout();
-                    },
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 30),
-            // Center(
-            //   child: SvgPicture.asset(
-            //     ImgRes.svgFlame, color: AppColors.colorPink, height: 50,),
-            // ),
-            SizedBox(height: 10),
-            Center(
-              child: Text(
-                'Version 1.1',
-                style: CommonUI.customTextStyle(
-                  fontFamily: AppFonts.fontRegular,
-                  fontSize: AppFontSizes.font12,
                 ),
               ),
-            ),
-            SizedBox(height: 30),
-            Center(
-              child: CustomButton(
-                borderRadius: 10,
-                onPressed: () {
-                  OkCancelDialog().customAlertBox(
-                    title: Strings.textDeleteAccount.tr,
-                    subTitle: '${Strings.textDeleteAccountMsg.tr}?',
-                    icon: CupertinoIcons.delete,
-                    onConfirmPressed: () {},
-                  );
-                },
-                width: 250,
-                text: Strings.textDeleteAccount.tr,
+             const  SizedBox(height: 20),
+              customEditProfileItems(
+                label: AppStrings.textAccountSettings.tr,
+                title: "Email",
+                titleColor: AppColors.black,
+                icon: CupertinoIcons.mail,
+                onPressed: () {},
               ),
-            ),
-            SizedBox(height: AppConstants.bottomSpace),
-          ],
+              customEditProfileItems(
+                label: AppStrings.textDistance.tr,
+                title: "TEst",
+                titleColor: AppColors.black,
+                icon: Icons.location_on_outlined,
+                onPressed: () {},
+              ),
+              const SizedBox(height: 20),
+              Obx(() {
+                return customEditProfileItems(
+                  flex: 9,
+                  label: AppStrings.textLocation.tr,
+                  title: controller.currentLocation.value.toString(),
+                  titleColor: AppColors.black,
+                  icon: CupertinoIcons.location,
+                  onPressed: () {},
+                );
+              }),
+              const SizedBox(height: 16),
+              customEditProfileItems(
+                title: AppStrings.textShareVibeMate.tr,
+                titleColor: AppColors.black,
+                icon: Icons.share,
+                onPressed:
+                    () => Share.shareUri(
+                      Uri.parse(
+                        'https://play.google.com/store/apps/details?id=com.vibemate',
+                      ),
+                    ),
+              ),
+              const SizedBox(height: 20),
+              Center(
+                child: CustomButton(
+                  width: 250,
+                  borderRadius: 10,
+                  text: AppStrings.textLogOut.tr,
+                  onPressed: () {
+                    OkCancelDialog().customAlertBox(
+                      title: AppStrings.textLogOut.tr,
+                      subTitle: '${AppStrings.textLogOutTitle.tr}?',
+                      onConfirmPressed: () {
+                        controller.logout();
+                      },
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 30),
+              Center(
+                child: CommonUI.setSvg(
+                  AppImages.svgFlame,
+                  height: 50,
+                  color: AppColors.colorPrimary,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Center(
+                child: Text(
+                  'Version 1.1',
+                  style: CommonUI.customTextStyle(
+                    fontFamily: AppFonts.fontRegular,
+                    fontSize: AppFontSizes.font12,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              Center(
+                child: CustomButton(
+                  borderRadius: 10,
+                  onPressed: () {
+                    OkCancelDialog().customAlertBox(
+                      title: AppStrings.textDeleteAccount.tr,
+                      subTitle: '${AppStrings.textDeleteAccountMsg.tr}?',
+                      icon: CupertinoIcons.delete,
+                      onConfirmPressed: () {
+                        controller.deleteAccount();
+                      },
+                    );
+                  },
+                  width: 250,
+                  text: AppStrings.textDeleteAccount.tr,
+                ),
+              ),
+              SizedBox(height: AppConstants.bottomSpace),
+            ],
+          ),
         ),
       ),
     );

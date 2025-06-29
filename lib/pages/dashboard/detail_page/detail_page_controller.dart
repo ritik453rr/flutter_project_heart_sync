@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/model/user_data_model.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:share_plus/share_plus.dart';
-
 
 /// A controller for the DetailPage.
 class DetailPageController extends GetxController {
@@ -21,16 +20,14 @@ class DetailPageController extends GetxController {
   // final currentImageIndex = 0.obs;
   // final isRequested = false.obs; // Track if user is added
 
- 
-
   // Reasons for reporting
   final List<String> reasons = [
-    Strings.textSpam.tr,
-    Strings.textInappropriateContent.tr,
-    Strings.textHarassment.tr,
-    Strings.textFakeProfile.tr,
-    Strings.textScam.tr,
-    Strings.textOthers.tr,
+    AppStrings.textSpam.tr,
+    AppStrings.textInappropriateContent.tr,
+    AppStrings.textHarassment.tr,
+    AppStrings.textFakeProfile.tr,
+    AppStrings.textScam.tr,
+    AppStrings.textOthers.tr,
   ];
 
   @override

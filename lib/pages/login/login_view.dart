@@ -8,7 +8,7 @@ import 'package:heart_sync/common/app_images.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_button.dart';
 import 'package:heart_sync/common/custom_textfield.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/login/login_controller.dart';
 import 'package:heart_sync/pages/login/widgets_login.dart';
 import 'package:heart_sync/services/firebase_services.dart';
@@ -25,6 +25,9 @@ class LoginView extends GetView<LoginController> {
         body: SafeArea(
           child: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppConstants.hzPadding,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -34,18 +37,18 @@ class LoginView extends GetView<LoginController> {
                     vertical: 20,
                   ),
                   child: Text(
-                    Strings.textLoginTitle.tr,
+                    AppStrings.textLoginTitle.tr,
                     style: CommonUI.customTextStyle(
                       fontFamily: AppFonts.fontSemiBold,
                       fontSize: AppFontSizes.font16,
                     ),
                   ),
                 ),
-                Center(child: CommonUI.setPng(AppImages.pngLogin, height: 140)),
+                Center(child: CommonUI.setPng(AppImages.pngLogin, height: 170)),
                 const SizedBox(height: 20),
                 CustomTextField(
                   controller: controller.emailController,
-                  hintText: Strings.textEmail.tr,
+                  hintText: AppStrings.textEmail.tr,
                   inputFormatters: [
                     FilteringTextInputFormatter.deny(RegExp(r'\s')),
                   ],
@@ -55,7 +58,7 @@ class LoginView extends GetView<LoginController> {
                 Obx(() {
                   return CustomTextField(
                     controller: controller.passwordController,
-                    hintText: Strings.textPassword.tr,
+                    hintText: AppStrings.textPassword.tr,
 
                     obSecureText:
                         controller.isPasswordVisible.value ? false : true,
@@ -73,8 +76,7 @@ class LoginView extends GetView<LoginController> {
                 const SizedBox(height: 20),
                 Obx(() {
                   return CustomButton(
-                    text: Strings.textLogin.tr,
-                    horizontalMargin: AppConstants.hzPadding,
+                    text: AppStrings.textLogin.tr,
                     onPressed:
                         () =>
                             controller.isLoading.value
@@ -87,10 +89,9 @@ class LoginView extends GetView<LoginController> {
 
                 Obx(
                   () => CustomButton(
-                    text: "Continue with Google",
+                    text: AppStrings.textContinueWithGoogle.tr,
                     imagePath: AppImages.svgGoogle,
                     showImage: true,
-                    horizontalMargin: AppConstants.hzPadding,
                     onPressed: () async {
                       controller.loginWithGoogle();
                     },

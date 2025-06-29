@@ -6,7 +6,7 @@ import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_app_bar.dart';
 import 'package:heart_sync/common/custom_textfield.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/message/widgets/messages_widgets.dart';
 import 'package:heart_sync/pages/dashboard/search_user/search_user_controller.dart';
 
@@ -27,7 +27,7 @@ class SearchUserView extends GetView<SearchUserController> {
       child: Scaffold(
         backgroundColor: AppColors.background,
         appBar: CustomAppBar(
-          title: Strings.textSearch.tr,
+          title: AppStrings.textSearch.tr,
           titleColor: AppColors.pink,
           shadow: false,
         ),
@@ -35,12 +35,10 @@ class SearchUserView extends GetView<SearchUserController> {
           child: Column(
             children: [
               CustomTextField(
-                leftPadding: AppConstants.hzPadding,
-                rightPadding: AppConstants.hzPadding,
-                topPadding: 10,
+
                 controller: searchController,
                 onChanged: (value) => controller.searchQuery.value = value,
-                hintText: Strings.textSearchFriends.tr,
+                hintText: AppStrings.textSearchFriends.tr,
                 // prefixIcon: Icons.search
               ),
               Expanded(
@@ -57,7 +55,7 @@ class SearchUserView extends GetView<SearchUserController> {
                           NeumorphicText(
                             controller.searchQuery.value.isEmpty
                                 ? "No friends found"
-                                : Strings.textNoFriendsFound.tr,
+                                : AppStrings.textNoFriendsFound.tr,
                             style: CommonUI.customNeuMorphismStyle(
                               color: AppColors.black,
                               shadowDarkColor: Colors.black26,

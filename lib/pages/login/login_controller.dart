@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_storage.dart';
 import 'package:heart_sync/common/common_ui.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/routing/app_routes.dart';
 import 'package:heart_sync/services/firebase_services.dart';
 
@@ -22,7 +21,6 @@ class LoginController extends GetxController {
   /// Variables
   var isPasswordVisible = false.obs;
   var isLoading = false.obs;
-  var snackbarShown = false;
 
   /// Toggles the visibility of the password field.
   void togglePasswordVisibility() {
@@ -36,31 +34,17 @@ class LoginController extends GetxController {
     RegExp regExp = RegExp(emailPattern);
     // Validate email
     if (email.isEmpty) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar('Error', 'Please enter your email address');
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterEmail.tr);
       return false;
     } else if (!regExp.hasMatch(email)) {
-      if (snackbarShown) return false;
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar('Error', 'Please enter a valid email address');
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterValidEmail.tr);
       return false;
     }
 
     // Validate password
     if (password.isEmpty) {
-      if (snackbarShown) return false; // Prevent multiple snackbars
-      snackbarShown = true;
-      Future.delayed(const Duration(seconds: 3), () {
-        snackbarShown = false;
-      });
-      CommonUI.snackbar('Error', 'Please enter your password');
+      CommonUI.adaptiveDialog(content: AppStrings.textEnterPassword.tr);
+
       return false;
     }
 
@@ -70,7 +54,7 @@ class LoginController extends GetxController {
   /// Initiates the login process with email and password.
   void login() async {
     if (!await AppConstants.checkInternetConnection()) {
-      CommonUI.toast(toastMsg: Strings.textNoInternetConnection.tr);
+      CommonUI.toast(toastMsg: AppStrings.textNoInternetConnection.tr);
       return;
     }
     if (validateAllFields()) {
@@ -83,15 +67,19 @@ class LoginController extends GetxController {
         Get.offAllNamed(AppRoutes.dashboard);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
-          CommonUI.snackbar('Error', 'No user found for that email.');
+          CommonUI.adaptiveDialog(content: AppStrings.textNoUsersFound.tr);
         } else if (e.code == 'wrong-password') {
-          CommonUI.snackbar('Error', 'Wrong password.');
+          CommonUI.adaptiveDialog(content: AppStrings.textWrongPassword.tr);
         } else {
           debugPrint('Error: ${e.message}');
-          CommonUI.snackbar('Error', 'Invalid credentials. Please try again.');
+          CommonUI.adaptiveDialog(
+            content: AppStrings.textInvalidCredentials.tr,
+          );
         }
       } catch (e) {
-        CommonUI.snackbar('Error', 'An unexpected error occurred: $e');
+        CommonUI.adaptiveDialog(
+          content: '${AppStrings.textUnExpectedError.tr}: $e',
+        );
       } finally {
         isLoading.value = false;
       }
@@ -101,15 +89,14 @@ class LoginController extends GetxController {
   /// Initiates the Google sign-in process.
   void loginWithGoogle() async {
     if (!await AppConstants.checkInternetConnection()) {
-      CommonUI.toast(toastMsg: Strings.textNoInternetConnection.tr);
+      CommonUI.toast(toastMsg: AppStrings.textNoInternetConnection.tr);
       return;
     }
     if (await FirebaseServices.signInWithGoogle()) {
       AppStorage.setLoginStatus(true);
       Get.offAllNamed(AppRoutes.dashboard);
-      
     } else {
-      CommonUI.snackbar('Error', 'Google sign-in failed. Please try again.');
+      CommonUI.snackbar(message: AppStrings.textSignInFailed.tr);
     }
   }
 }

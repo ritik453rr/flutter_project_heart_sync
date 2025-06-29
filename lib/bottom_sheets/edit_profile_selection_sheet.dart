@@ -7,7 +7,7 @@ import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_back_button.dart';
 import 'package:heart_sync/common/custom_button.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 
 /// A function to show a bottom sheet for editing profile selection with chips.
 void showEditProfileSelectionBottomSheet({
@@ -127,7 +127,7 @@ void showEditProfileSelectionBottomSheet({
             const SizedBox(height: 40),
             CustomButton(
               width: 200,
-              text: Strings.textDone.tr,
+              text: AppStrings.textDone.tr,
               onPressed: () async {},
             ),
             const SizedBox(height: AppConstants.bottomSpace),

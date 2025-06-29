@@ -63,9 +63,7 @@ class ChatView extends GetView<ChatController> {
               ),
               CustomTextField(
                 borderRadius: 40,
-                leftPadding: 20,
-                rightPadding: 20,
-                bottomPadding: 10,
+        
                 controller: controller.msgController,
                 isTextInputDone: true,
                 hintText: "Type a message",

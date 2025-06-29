@@ -1,8 +1,8 @@
 /// This class is used to store all the strings used in the app
-class Strings {
+class AppStrings {
   static const String textAppName = 'app_name';
 
-   /// Login Page
+  /// Login Page
   static const String textEmail = 'email';
   static const String textPassword = 'password';
   static const String textLogin = 'login';
@@ -11,18 +11,35 @@ class Strings {
   static const String textDontHaveAccount = 'dont_have_account';
   static const String textLoginTitle = 'login_title';
   static const textNoInternetConnection = "noInternetConnection";
-
-  /// Onboarding Page
-  static const String textSkip = 'skip';
-  static const String textNext = 'next';
-  static const String textDone = 'done';
-
- 
+  static const textOk = "ok";
+  static const textWrongPassword = 'Wrong password';
+  static const textInvalidCredentials = 'Invalid credentials';
+  static const textUnExpectedError = 'unExpectedError';
+  static const textEnterEmail = 'enterEmail';
+  static const textEnterValidEmail = 'enterValidEmail';
+  static const textEnterPassword = 'enterPassword';
+  static const textPasswordIsTooWeak = 'passwordIsTooWeak';
+  static const textEmailAlreadyInUse = 'emailAlreadyInUse';
+  static const textSignInFailed = 'signInFailed';
+  static const textContinueWithGoogle = "continueWithGoogle";
 
   /// Sign Up Page
   static const String textSignUpTitle = 'sign_up_title';
   static const String textConfirmPassword = 'confirm_password';
   static const String textAlreadyHaveAccount = 'already_have_account';
+  static const textPasswordLengthConstraint = "passwordLengthConstraint";
+  static const textPasswordsDoNotMatch = "passwordsDoNotMatch";
+  static const textError = 'error';
+  static const textSuccess = 'success';
+  static const textUserCreatedSuccessfully = 'userCreatedSuccessfully';
+
+  /// Forgot Password Page
+  static const textResetPassword = 'sendEmail';
+
+  /// Onboarding Page
+  static const String textSkip = 'skip';
+  static const String textNext = 'next';
+  static const String textDone = 'done';
 
   /// Dashboard Page
   static const String textNewMatches = 'newMatches';

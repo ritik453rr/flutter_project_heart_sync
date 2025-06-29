@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/common_ui.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 
 /// A bottom sheet that shows a list of actions.
 class ActionBottomSheet {
@@ -25,21 +25,21 @@ class ActionBottomSheet {
               child: Column(
                 children: [
                   actionSheetItem(
-                    title: Strings.textShare.tr,
+                    title: AppStrings.textShare.tr,
                     onTap: onTapShare,
                   ),
                   actionSheetItem(
-                    title: Strings.textBlock.tr,
+                    title: AppStrings.textBlock.tr,
                     color: AppColors.red,
                     onTap: onTapBlock,
                   ),
                   actionSheetItem(
-                    title: Strings.textReport.tr,
+                    title: AppStrings.textReport.tr,
                     color: AppColors.red,
                     onTap: onTapReport,
                   ),
                   actionSheetItem(
-                    title: Strings.textCancel.tr,
+                    title: AppStrings.textCancel.tr,
                     isLast: true,
                     onTap: () {
                       Get.back();

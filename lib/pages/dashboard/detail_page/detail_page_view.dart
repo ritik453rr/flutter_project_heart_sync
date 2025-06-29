@@ -6,7 +6,7 @@ import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/bottom_sheets/action_bottom_sheet.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_app_bar.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/detail_page/detail_page_controller.dart';
 import 'package:heart_sync/pages/dashboard/detail_page/widgets_detail_page.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -48,7 +48,7 @@ class DetailPageView extends GetView<DetailPageController> {
                   horizontal: 20,
                   vertical: 10,
                 ),
-                child: CommonUI.neumorphicText(Strings.textAboutMe.tr),
+                child: CommonUI.neumorphicText(AppStrings.textAboutMe.tr),
               ),
               // Info Sections Container
               Neumorphic(

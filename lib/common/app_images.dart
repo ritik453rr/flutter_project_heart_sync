@@ -5,5 +5,6 @@ class AppImages {
 
   /// Svgs
   static const String svgGoogle = 'google_icon';
+  static const String svgFlame = 'flame';
  
 }

@@ -5,7 +5,7 @@ import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 
 /// A Custom Alert Dialog that shows a message and has two buttons: Yes and No.
 class OkCancelDialog {
@@ -91,7 +91,7 @@ class OkCancelDialog {
                               ),
                               style: CommonUI.customNeuMorphismStyle(),
                               child: Text(
-                                Strings.textYes.tr,
+                                AppStrings.textYes.tr,
                                 style: CommonUI.customTextStyle(
                                   fontFamily: AppFonts.fontMedium,
                                   fontSize: AppFontSizes.font16,
@@ -120,7 +120,7 @@ class OkCancelDialog {
                               ),
                               style: CommonUI.customNeuMorphismStyle(),
                               child: Text(
-                                Strings.textNo.tr,
+                                AppStrings.textNo.tr,
                                 style: CommonUI.customTextStyle(
                                   fontFamily: AppFonts.fontMedium,
                                   fontSize: AppFontSizes.font16,

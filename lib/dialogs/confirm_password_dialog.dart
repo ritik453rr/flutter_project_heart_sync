@@ -8,7 +8,7 @@ import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_button.dart';
 import 'package:heart_sync/common/custom_textfield.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 
 /// A Custom Alert Dialog that shows a message and has two buttons: Yes and No.
 class confirmPasswordDialog {
@@ -41,7 +41,7 @@ class confirmPasswordDialog {
             children: [
               const SizedBox(height: 20),
               Text(
-                Strings.textConfirmPassword.tr,
+                AppStrings.textConfirmPassword.tr,
                 style: CommonUI.customTextStyle(
                   fontSize: AppFontSizes.font16,
                   fontFamily: AppFonts.fontSemiBold,
@@ -63,7 +63,7 @@ class confirmPasswordDialog {
                       fontSize: AppFontSizes.font12,
                       borderRadius: 10,
                       height: 35,
-                      text: Strings.textCancel.tr,
+                      text: AppStrings.textCancel.tr,
                       onPressed: () {
                         AppConstants.hideKeyboard();
                         Get.back();
@@ -76,7 +76,7 @@ class confirmPasswordDialog {
                       fontSize: AppFontSizes.font12,
                       borderRadius: 10,
                       height: 35,
-                      text: Strings.textDelete.tr,
+                      text: AppStrings.textDelete.tr,
                       onPressed: () async {},
                     ),
                   ),

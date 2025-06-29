@@ -4,7 +4,7 @@ import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_shimmers.dart';
 import 'package:heart_sync/common/custom_app_bar.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/message/message_controller.dart';
 import 'package:heart_sync/pages/dashboard/message/widgets/messages_widgets.dart';
 import 'package:heart_sync/routing/app_routes.dart';
@@ -19,7 +19,7 @@ class MessageView extends GetView<MessageController> {
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CustomAppBar(
-        title: Strings.textVibeMate.tr,
+        title: AppStrings.textVibeMate.tr,
         titleFontSize: 20,
         titleColor: AppColors.pink,
         centerTitle: false,

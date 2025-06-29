@@ -8,7 +8,7 @@ import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_back_button.dart';
 import 'package:heart_sync/common/custom_button.dart';
 import 'package:heart_sync/common/custom_textfield.dart';
-import 'package:heart_sync/language/strings.dart';
+import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/edit_profile/edit_profile_controller.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -59,7 +59,7 @@ void showEditHeightSheet({
                       padding: const EdgeInsets.only(top: 16),
                       child: Center(
                         child: Text(
-                          Strings.textHeight.tr,
+                          AppStrings.textHeight.tr,
                           style: CommonUI.customTextStyle(
                             fontFamily: AppFonts.fontSemiBold,
                             fontSize: AppFontSizes.font18,
@@ -124,7 +124,7 @@ void showEditHeightSheet({
                 const SizedBox(height: 40),
                 CustomButton(
                   width: 200,
-                  text: Strings.textDone.tr,
+                  text: AppStrings.textDone.tr,
                   onPressed: () async {
                     AppConstants.hideKeyboard();
                   },
