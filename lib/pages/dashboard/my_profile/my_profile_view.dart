@@ -22,11 +22,11 @@ class MyProfileView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           Center(
             child: Neumorphic(
-              padding: EdgeInsets.all(4),
-              style: NeumorphicStyle(
+              padding: const EdgeInsets.all(4),
+              style: const NeumorphicStyle(
                 depth: 4,
                 intensity: 0.5,
                 surfaceIntensity: 0.5,
@@ -44,7 +44,7 @@ class MyProfileView extends StatelessWidget {
                         (context, url) => Shimmer.fromColors(
                           baseColor: Colors.black12,
                           highlightColor: AppColors.white,
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             radius: 50,
                             backgroundColor: AppColors.white,
                           ),
@@ -53,7 +53,7 @@ class MyProfileView extends StatelessWidget {
                         (context, url, error) => Shimmer.fromColors(
                           baseColor: AppColors.gray,
                           highlightColor: AppColors.white,
-                          child: CircleAvatar(
+                          child: const CircleAvatar(
                             radius: 50,
                             backgroundColor: AppColors.white,
                           ),
@@ -63,7 +63,7 @@ class MyProfileView extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           NeumorphicText(
             "User Name",
             style: NeumorphicStyle(
@@ -78,25 +78,25 @@ class MyProfileView extends StatelessWidget {
             ),
           ),
 
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           customProfileItems(
             title: AppStrings.textProfile.tr,
             icon: CupertinoIcons.person,
             onPressed: () => Get.toNamed(AppRoutes.profile),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           customProfileItems(
             title: AppStrings.textSettings.tr,
             icon: CupertinoIcons.settings,
             onPressed: () => Get.toNamed(AppRoutes.setting),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           customProfileItems(
             title: AppStrings.textPrivacy.tr,
             icon: CupertinoIcons.lock_shield,
             onPressed: () => controller.launchPrivacyPolicy(),
           ),
-          SizedBox(height: 16),
+         const  SizedBox(height: 16),
           customProfileItems(
             title: AppStrings.textContactUs.tr,
             icon: CupertinoIcons.mail,

@@ -13,6 +13,8 @@ import 'package:heart_sync/pages/dashboard/my_profile/edit_profile/edit_profile_
 import 'package:heart_sync/pages/dashboard/my_profile/edit_profile/edit_profile_view.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/my_profile_view.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/my_profle_binding.dart';
+import 'package:heart_sync/pages/dashboard/my_profile/setting/reauthentication/reauthentication_binding.dart';
+import 'package:heart_sync/pages/dashboard/my_profile/setting/reauthentication/reauthentication_view.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/setting/setting_binding.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/setting/setting_view.dart';
 import 'package:heart_sync/pages/dashboard/request/request_binding.dart';
@@ -123,6 +125,11 @@ class AppPages {
       name: AppRoutes.setting,
       page: () => SettingView(),
       binding: SettingBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.reauthentication,
+      page: () => ReauthenticationView(),
+      binding: ReauthenticationBinding(),
     ),
   ];
 }

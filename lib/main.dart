@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:heart_sync/common/app_colors.dart';
 import 'language/app_language.dart';
 import 'routing/app_pages.dart';
 import 'routing/app_routes.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       translations: AppLanguage(),
+      theme: ThemeData(scaffoldBackgroundColor: AppColors.background),
       locale: const Locale('en', 'US'),
       fallbackLocale: const Locale('en', 'US'),
       initialRoute: AppRoutes.splash,

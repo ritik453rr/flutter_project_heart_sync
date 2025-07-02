@@ -95,8 +95,6 @@ class LoginController extends GetxController {
     if (await FirebaseServices.signInWithGoogle()) {
       AppStorage.setLoginStatus(true);
       Get.offAllNamed(AppRoutes.dashboard);
-    } else {
-      CommonUI.snackbar(message: AppStrings.textSignInFailed.tr);
     }
   }
 }

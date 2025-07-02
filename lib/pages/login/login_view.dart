@@ -1,6 +1,8 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
@@ -21,9 +23,10 @@ class LoginView extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => AppConstants.hideKeyboard(),
-      child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
+      child: ColorfulSafeArea(
+        topColor: AppColors.background,
+        child: Scaffold(
+          body: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             padding: const EdgeInsets.symmetric(
               horizontal: AppConstants.hzPadding,

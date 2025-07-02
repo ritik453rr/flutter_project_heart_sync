@@ -17,4 +17,5 @@ class AppRoutes {
   static const detailPage = '/detail-page';
   static const notification = '/notification';
   static const request = '/request';
+  static const reauthentication = '/reauthentication';
 }

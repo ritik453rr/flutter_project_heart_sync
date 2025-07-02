@@ -13,9 +13,8 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return ColorfulSafeArea(
-      color: AppColors.background,
+      topColor: AppColors.background,
       child: Scaffold(
-        backgroundColor: AppColors.white,
         bottomNavigationBar: Obx(() {
           return Theme(
             data: Theme.of(context).copyWith(

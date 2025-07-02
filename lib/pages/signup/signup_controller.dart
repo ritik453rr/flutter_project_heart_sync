@@ -34,7 +34,7 @@ class SignUpController extends GetxController {
     var email = emailController.text.trim();
     var password = passwordController.text.trim();
     var confirmPassword = confirmPasswordController.text.trim();
-    String emailPattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
+    String emailPattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+(\.[a-zA-Z]+)+$';
     RegExp regExp = RegExp(emailPattern);
     // Validate email
     if (email.isEmpty) {

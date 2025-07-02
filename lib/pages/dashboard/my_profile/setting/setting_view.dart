@@ -1,3 +1,5 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,6 +9,7 @@ import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/app_images.dart';
+import 'package:heart_sync/common/app_storage.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/common/custom_app_bar.dart';
 import 'package:heart_sync/common/custom_button.dart';
@@ -14,6 +17,8 @@ import 'package:heart_sync/dialogs/ok_cancel_dialog.dart';
 import 'package:heart_sync/language/app_strings.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/edit_profile/widgets/edit_profile_widgets.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/setting/setting_controller.dart';
+import 'package:heart_sync/routing/app_routes.dart';
+import 'package:heart_sync/services/firebase_services.dart';
 import 'package:share_plus/share_plus.dart';
 
 /// A Stateless widget that represents the settings view in the application.
@@ -26,10 +31,11 @@ class SettingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: AppStrings.textSettings.tr),
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColorfulSafeArea(
+      topColor: AppColors.background,
+      child: Scaffold(
+        appBar: CustomAppBar(title: AppStrings.textSettings.tr),
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -71,7 +77,7 @@ class SettingView extends StatelessWidget {
                   ),
                 ),
               ),
-             const  SizedBox(height: 20),
+              const SizedBox(height: 20),
               customEditProfileItems(
                 label: AppStrings.textAccountSettings.tr,
                 title: "Email",
@@ -120,7 +126,7 @@ class SettingView extends StatelessWidget {
                       title: AppStrings.textLogOut.tr,
                       subTitle: '${AppStrings.textLogOutTitle.tr}?',
                       onConfirmPressed: () {
-                        controller.logout();
+                        FirebaseServices.logout();
                       },
                     );
                   },
@@ -154,7 +160,7 @@ class SettingView extends StatelessWidget {
                       subTitle: '${AppStrings.textDeleteAccountMsg.tr}?',
                       icon: CupertinoIcons.delete,
                       onConfirmPressed: () {
-                        controller.deleteAccount();
+                        FirebaseServices.deleteAccount();
                       },
                     );
                   },
@@ -162,7 +168,7 @@ class SettingView extends StatelessWidget {
                   text: AppStrings.textDeleteAccount.tr,
                 ),
               ),
-              SizedBox(height: AppConstants.bottomSpace),
+              const SizedBox(height: AppConstants.bottomSpace),
             ],
           ),
         ),

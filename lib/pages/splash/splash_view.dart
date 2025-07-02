@@ -1,3 +1,4 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:heart_sync/common/app_colors.dart';
@@ -13,16 +14,18 @@ class SplashView extends StatelessWidget {
   final controller = Get.find<SplashController>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: Center(
-        child: NeumorphicText(
-          AppStrings.textAppName.tr,
-          style: CommonUI.customNeuMorphismStyle(
-            depth: 2,
-            shape: NeumorphicShape.flat,
+    return ColorfulSafeArea(
+      topColor: AppColors.background,
+      child: Scaffold(
+        body: Center(
+          child: NeumorphicText(
+            AppStrings.textAppName.tr,
+            style: CommonUI.customNeuMorphismStyle(
+              depth: 2,
+              shape: NeumorphicShape.flat,
+            ),
+            textStyle: NeumorphicTextStyle(fontSize: AppFontSizes.font40),
           ),
-          textStyle: NeumorphicTextStyle(fontSize: AppFontSizes.font40),
         ),
       ),
     );
