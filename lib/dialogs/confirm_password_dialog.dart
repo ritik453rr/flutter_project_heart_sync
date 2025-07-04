@@ -59,6 +59,7 @@ class confirmPasswordDialog {
                 children: [
                   Expanded(
                     child: CustomButton(
+                      isLoading: false.obs,
                       horizontalMargin: 20,
                       fontSize: AppFontSizes.font12,
                       borderRadius: 10,
@@ -73,6 +74,7 @@ class confirmPasswordDialog {
                   Expanded(
                     child: CustomButton(
                       horizontalMargin: 20,
+                      isLoading: false.obs,
                       fontSize: AppFontSizes.font12,
                       borderRadius: 10,
                       height: 35,

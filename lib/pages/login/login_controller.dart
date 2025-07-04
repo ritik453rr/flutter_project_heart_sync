@@ -53,6 +53,7 @@ class LoginController extends GetxController {
 
   /// Initiates the login process with email and password.
   void login() async {
+    AppConstants.hideKeyboard();
     if (!await AppConstants.checkInternetConnection()) {
       CommonUI.toast(toastMsg: AppStrings.textNoInternetConnection.tr);
       return;

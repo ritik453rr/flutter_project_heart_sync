@@ -1,4 +1,3 @@
-import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
@@ -20,8 +19,7 @@ class SwipeView extends GetView<SwipeController> {
 
   @override
   Widget build(BuildContext context) {
-    return ColorfulSafeArea(
-      color: AppColors.background,
+    return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.background,
         appBar: AppBar(

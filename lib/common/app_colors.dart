@@ -10,6 +10,7 @@ class AppColors {
   static const Color white = Colors.white;
   static const Color gray = Colors.grey;
   static const Color black = Colors.black;
+  static const Color safeAreaColors = Colors.black;
   static Color shimmerBase = Colors.grey[300]!;
   static Color shimmerHl = Colors.grey[100]!;
   static const Color pink = Colors.pink;

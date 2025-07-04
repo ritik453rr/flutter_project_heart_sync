@@ -56,13 +56,11 @@ class FirebaseServices {
     await GoogleSignIn().signOut();
     await auth.signOut();
     AppStorage.setLoginStatus(false);
-    Get.offAllNamed(AppRoutes.login);
   }
 
-  static void deleteAccount() async {
+  static Future<void> deleteAccount() async {
     try {
       await auth.currentUser?.delete();
-      logout();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'requires-recent-login') {
         Get.toNamed(AppRoutes.reauthentication);

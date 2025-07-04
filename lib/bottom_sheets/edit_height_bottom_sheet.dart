@@ -124,6 +124,7 @@ void showEditHeightSheet({
                 const SizedBox(height: 40),
                 CustomButton(
                   width: 200,
+                  isLoading: false.obs,
                   text: AppStrings.textDone.tr,
                   onPressed: () async {
                     AppConstants.hideKeyboard();

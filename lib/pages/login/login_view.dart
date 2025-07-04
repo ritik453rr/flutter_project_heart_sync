@@ -8,6 +8,7 @@ import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/app_images.dart';
 import 'package:heart_sync/common/common_ui.dart';
+import 'package:heart_sync/common/custom_app_bar.dart';
 import 'package:heart_sync/common/custom_button.dart';
 import 'package:heart_sync/common/custom_textfield.dart';
 import 'package:heart_sync/language/app_strings.dart';
@@ -24,8 +25,15 @@ class LoginView extends GetView<LoginController> {
     return GestureDetector(
       onTap: () => AppConstants.hideKeyboard(),
       child: ColorfulSafeArea(
-        topColor: AppColors.background,
+         top: false,
+      // topColor: AppColors.background,
         child: Scaffold(
+          appBar: CustomAppBar(
+            shadow: false,
+            hideBackButton: true,
+            appBarHeight: 0,
+          ),
+          
           body: SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             padding: const EdgeInsets.symmetric(
@@ -47,7 +55,9 @@ class LoginView extends GetView<LoginController> {
                     ),
                   ),
                 ),
-                Center(child: CommonUI.setPng(AppImages.pngLogin, height: 170)),
+                Center(
+                  child: CommonUI.setPng(AppImages.pngLogin, height: 170),
+                ),
                 const SizedBox(height: 20),
                 CustomTextField(
                   controller: controller.emailController,
@@ -62,7 +72,7 @@ class LoginView extends GetView<LoginController> {
                   return CustomTextField(
                     controller: controller.passwordController,
                     hintText: AppStrings.textPassword.tr,
-
+                  
                     obSecureText:
                         controller.isPasswordVisible.value ? false : true,
                     suffixIcon:
@@ -70,38 +80,37 @@ class LoginView extends GetView<LoginController> {
                             ? Icons.visibility
                             : Icons.visibility_off,
                     showSuffixIcon: true,
-                    suffixIconTap: () => controller.togglePasswordVisibility(),
+                    suffixIconTap:
+                        () => controller.togglePasswordVisibility(),
                     isTextInputDone: true,
                   );
                 }),
                 const SizedBox(height: 16),
                 forgotPasswordPrompt(),
                 const SizedBox(height: 20),
-                Obx(() {
-                  return CustomButton(
-                    text: AppStrings.textLogin.tr,
-                    onPressed:
-                        () =>
-                            controller.isLoading.value
-                                ? null
-                                : controller.login(),
-                    isLoading: controller.isLoading.value,
-                  );
-                }),
-                const SizedBox(height: 20),
-
-                Obx(
-                  () => CustomButton(
-                    text: AppStrings.textContinueWithGoogle.tr,
-                    imagePath: AppImages.svgGoogle,
-                    showImage: true,
-                    onPressed: () async {
-                      controller.loginWithGoogle();
-                    },
-                    isLoading: FirebaseServices.isSigning.value,
-                  ),
+                  
+                CustomButton(
+                  text: AppStrings.textLogin.tr,
+                  onPressed:
+                      () =>
+                          controller.isLoading.value
+                              ? null
+                              : controller.login(),
+                  isLoading: controller.isLoading,
                 ),
-
+                  
+                const SizedBox(height: 20),
+                  
+                CustomButton(
+                  text: AppStrings.textContinueWithGoogle.tr,
+                  imagePath: AppImages.svgGoogle,
+                  showImage: true,
+                  onPressed: () async {
+                    controller.loginWithGoogle();
+                  },
+                  isLoading: FirebaseServices.isSigning,
+                ),
+                  
                 const SizedBox(height: 20),
                 signUpPrompt(),
                 const SizedBox(height: AppConstants.bottomSpace),

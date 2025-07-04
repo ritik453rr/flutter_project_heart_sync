@@ -51,7 +51,10 @@ Widget forgotPasswordPrompt() {
       },
       child: Text(
         AppStrings.textForgotPassword.tr,
-        style: CommonUI.customTextStyle(color: AppColors.colorPrimary),
+        style: CommonUI.customTextStyle(
+          color: AppColors.colorPrimary,
+          fontFamily: AppFonts.fontSemiBold,
+        ),
       ),
     ),
   );

@@ -18,6 +18,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: CustomAppBar(
         title: "TEst",
         titleColor: AppColors.pink,
@@ -70,7 +71,8 @@ class HomeView extends GetView<HomeController> {
                                       right: 10,
                                     ),
                                     itemBuilder: (context, index) {
-                                      if (index >= controller.userList.length) {
+                                      if (index >=
+                                          controller.userList.length) {
                                         return paginationLoader();
                                       }
                                       final user = controller.userList[index];
@@ -91,7 +93,7 @@ class HomeView extends GetView<HomeController> {
                                     },
                                   ),
                                 ),
-
+                            
                                 Padding(
                                   padding: const EdgeInsets.only(
                                     left: 20,
@@ -109,7 +111,8 @@ class HomeView extends GetView<HomeController> {
                                             ? 1
                                             : 0),
                                     itemBuilder: (context, index) {
-                                      if (index >= controller.userList.length) {
+                                      if (index >=
+                                          controller.userList.length) {
                                         return paginationLoader();
                                       }
                                       final user = controller.userList[index];

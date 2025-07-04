@@ -1,5 +1,4 @@
 import 'package:colorful_safe_area/colorful_safe_area.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,9 +31,13 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColorfulSafeArea(
-      topColor: AppColors.background,
+      top: false,
       child: Scaffold(
-        appBar: CustomAppBar(title: AppStrings.textSettings.tr),
+        appBar: CustomAppBar(
+          shadow: false,
+          hideBackButton: true,
+          appBarHeight: 0,
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,13 +123,14 @@ class SettingView extends StatelessWidget {
                 child: CustomButton(
                   width: 250,
                   borderRadius: 10,
+                  isLoading: controller.logoutLoading,
                   text: AppStrings.textLogOut.tr,
                   onPressed: () {
                     OkCancelDialog().customAlertBox(
                       title: AppStrings.textLogOut.tr,
                       subTitle: '${AppStrings.textLogOutTitle.tr}?',
                       onConfirmPressed: () {
-                        FirebaseServices.logout();
+                        controller.onConfirmLogout();
                       },
                     );
                   },
@@ -154,13 +158,15 @@ class SettingView extends StatelessWidget {
               Center(
                 child: CustomButton(
                   borderRadius: 10,
+                  isLoading: controller.acDeleting,
                   onPressed: () {
                     OkCancelDialog().customAlertBox(
                       title: AppStrings.textDeleteAccount.tr,
                       subTitle: '${AppStrings.textDeleteAccountMsg.tr}?',
+
                       icon: CupertinoIcons.delete,
                       onConfirmPressed: () {
-                        FirebaseServices.deleteAccount();
+                        controller.onConfirmDelete();
                       },
                     );
                   },

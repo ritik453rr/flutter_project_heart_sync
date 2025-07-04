@@ -7,12 +7,15 @@ import 'package:heart_sync/common/app_storage.dart';
 import 'package:heart_sync/common/common_ui.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/setting/reauthentication/reauthentication_view.dart';
 import 'package:heart_sync/routing/app_routes.dart';
+import 'package:heart_sync/services/firebase_services.dart';
 
 /// A controller class for managing settings in the application.
 class SettingController extends GetxController {
   /// Instances
   var auth = FirebaseAuth.instance;
   var currentLocation = "Loading...".obs;
+  var acDeleting = false.obs;
+  var logoutLoading = false.obs;
   //AppStorage appStorage = AppStorage();
 
   @override
@@ -21,9 +24,24 @@ class SettingController extends GetxController {
     //fetchCurrentLocation();
   }
 
-
-
+  /// handle ac deletion confirmation
+  void onConfirmDelete() async {
+    Get.back();
+    acDeleting.value = true;
+    await FirebaseServices.deleteAccount();
+     FirebaseServices.logout();
+    acDeleting.value = false;
+    Get.offAllNamed(AppRoutes.login);
+  }
   
+  /// Handle logout confirmation
+  void onConfirmLogout() async {
+    Get.back();
+    logoutLoading.value = true;
+    await FirebaseServices.logout();
+    logoutLoading.value = false;
+    Get.offAllNamed(AppRoutes.login);
+  }
 
   /// Function to logout the user
   // void logout() {

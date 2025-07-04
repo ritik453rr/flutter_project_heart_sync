@@ -63,17 +63,15 @@ class OnboardingView extends StatelessWidget {
             bottom: AppConstants.bottomSpace,
             left: 20,
             right: 20,
-            child: Obx(() {
-              return CustomButton(
-                text: AppStrings.textNext.tr,
-                onPressed:
-                    () =>
-                        controller.isLoading.value
-                            ? null
-                            : controller.handlePageNavigation(),
-                isLoading: controller.isLoading.value,
-              );
-            }),
+            child: CustomButton(
+              text: AppStrings.textNext.tr,
+              onPressed:
+                  () =>
+                      controller.isLoading.value
+                          ? null
+                          : controller.handlePageNavigation(),
+              isLoading: controller.isLoading,
+            ),
           ),
         ],
       ),

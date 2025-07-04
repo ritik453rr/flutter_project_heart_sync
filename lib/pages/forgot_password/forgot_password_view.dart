@@ -60,8 +60,8 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                 ),
                 const SizedBox(height: 16),
                 Center(
-                  child: Obx(() {
-                    return CustomButton(
+                  child: 
+                    CustomButton(
                       text: AppStrings.textResetPassword.tr,
                       onPressed:
                           () =>
@@ -69,9 +69,8 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                                   ? null
                                   : controller.sendPasswordResetEmail(),
                       horizontalMargin: AppConstants.hzPadding,
-                      isLoading: controller.isLoading.value,
-                    );
-                  }),
+                      isLoading: controller.isLoading,
+                    ),                  
                 ),
                 const SizedBox(height: AppConstants.bottomSpace),
               ],

@@ -127,6 +127,7 @@ void showEditProfileSelectionBottomSheet({
             const SizedBox(height: 40),
             CustomButton(
               width: 200,
+              isLoading: false.obs,
               text: AppStrings.textDone.tr,
               onPressed: () async {},
             ),

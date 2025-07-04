@@ -1,10 +1,13 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:heart_sync/common/app_colors.dart';
 import 'package:heart_sync/common/app_constants.dart';
 import 'package:heart_sync/common/app_font_sizes.dart';
 import 'package:heart_sync/common/app_fonts.dart';
 import 'package:heart_sync/common/common_ui.dart';
+import 'package:heart_sync/common/custom_app_bar.dart';
 import 'package:heart_sync/common/custom_button.dart';
 import 'package:heart_sync/common/custom_textfield.dart';
 import 'package:heart_sync/language/app_strings.dart';
@@ -17,11 +20,18 @@ class SignUpView extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => AppConstants.hideKeyboard(),
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
+    return ColorfulSafeArea(
+      top: false,
+      // topColor: AppColors.background,
+      child: GestureDetector(
+        onTap: () => AppConstants.hideKeyboard(),
+        child: Scaffold(
+          appBar: CustomAppBar(
+             shadow: false,
+            hideBackButton: true,
+            appBarHeight: 0,
+          ),
+          body: Column(
             children: [
               Expanded(
                 child: SingleChildScrollView(
@@ -32,7 +42,7 @@ class SignUpView extends GetView<SignUpController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 20),
                       Text(
                         AppStrings.textSignUpTitle.tr,
                         style: CommonUI.customTextStyle(
@@ -89,18 +99,16 @@ class SignUpView extends GetView<SignUpController> {
                 ),
               ),
               const SizedBox(height: 10),
-              Obx(() {
-                return CustomButton(
-                  text: AppStrings.textSignUp.tr,
-                  onPressed:
-                      () =>
-                          controller.isLoading.value
-                              ? null
-                              : controller.signUp(),
-                  horizontalMargin: AppConstants.hzPadding,
-                  isLoading: controller.isLoading.value,
-                );
-              }),
+
+              CustomButton(
+                text: AppStrings.textSignUp.tr,
+                onPressed:
+                    () =>
+                        controller.isLoading.value ? null : controller.signUp(),
+                horizontalMargin: AppConstants.hzPadding,
+                isLoading: controller.isLoading,
+              ),
+
               const SizedBox(height: 20),
               loginPrompt(),
               const SizedBox(height: AppConstants.bottomSpace),

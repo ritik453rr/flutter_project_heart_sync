@@ -70,6 +70,7 @@ class SignUpController extends GetxController {
 
   /// Function to create the user using Email and Password
   Future<void> signUp() async {
+    AppConstants.hideKeyboard();
     if (!await AppConstants.checkInternetConnection()) {
       CommonUI.toast(toastMsg: AppStrings.textNoInternetConnection.tr);
       return;

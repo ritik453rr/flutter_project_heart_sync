@@ -1,4 +1,3 @@
-import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:heart_sync/common/app_colors.dart';
@@ -10,15 +9,13 @@ import 'package:heart_sync/common/custom_app_bar.dart';
 import 'package:heart_sync/common/custom_button.dart';
 import 'package:heart_sync/common/custom_textfield.dart';
 import 'package:heart_sync/pages/dashboard/my_profile/setting/reauthentication/reauthentication_controller.dart';
-import 'package:heart_sync/services/firebase_services.dart';
 
 class ReauthenticationView extends StatelessWidget {
   ReauthenticationView({super.key});
   final controller = Get.find<ReauthenticationController>();
   @override
   Widget build(BuildContext context) {
-    return ColorfulSafeArea(
-      color: AppColors.background,
+    return SafeArea(
       child: Scaffold(
         appBar: CustomAppBar(title: "Delete Account"),
         body: Padding(
@@ -59,6 +56,7 @@ class ReauthenticationView extends StatelessWidget {
               const Spacer(),
               CustomButton(
                 text: "Delete",
+                isLoading: false.obs,
                 onPressed: () {
                   controller.onTapDelete();
                 },
